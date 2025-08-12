@@ -1,18 +1,23 @@
-"""
-Программа для подсчета клиентов в гипотетической базе данных
-Требует pandas
-"""
-
 import pandas as pd
 
 def count_clients(dataframe):
-    """Подсчитывает количество клиентов в DataFrame"""
+    """Подсчитывает количество клиентов в DataFrame
+    
+    Аргументы:
+        dataframe: pd.DataFrame - данные клиентов
+        
+    Возвращает:
+        int - количество клиентов
+        
+    Исключения:
+        ValueError - если входные данные не DataFrame
+    """
     if not isinstance(dataframe, pd.DataFrame):
-        raise ValueError("Input must be a pandas DataFrame")
+        raise ValueError("Входные данные должны быть pandas DataFrame")
     return len(dataframe)
 
 if __name__ == "__main__":
-    # Тестовые данные
+    # Создаем тестовый DataFrame
     test_data = pd.DataFrame({
         'client_id': [1, 2, 3],
         'name': ['Иванов', 'Петрова', 'Сидоров'],
@@ -20,6 +25,7 @@ if __name__ == "__main__":
     })
     
     try:
-        print(f"Клиентов найдено: {count_clients(test_data)}")
+        # Выводим результат с форматированием
+        print(f"Найдено клиентов: {count_clients(test_data)}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print(f"Произошла ошибка: {e}")
